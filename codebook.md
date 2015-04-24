@@ -34,3 +34,10 @@ There are average values for each mean and standart deviation of the features li
 - fBodyGyroJerkMag
 
 Full descrptions of these features you can find on [this site](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
+
+### Data structure
+All data is performed by different files. Each variable is in its own file (subject, activity label, table of feature values for each measurement). All set is divided into two group (test, train, each has a proper folder).
+
+* Firstly, for each of three variables the combined data set were made by concatenating "test" and "train" sets.
+* Then three datasets were merged into one. Just mean and standart deviation values for each feature variable were chosen from all the range.
+* The merged data set were aggregated by "subject" and "activity" variables to calculate avarage of each "mean" and "std" measured values. So the result set consist avarage values for each activity of each subject
