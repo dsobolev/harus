@@ -16,20 +16,21 @@ subjects <- merge_test_train("subject")
 activity_vals <- merge_test_train("y")
 feature_vals <- merge_test_train("X")
 
-# load features info
+# load & process features labels
 feature_labels <- read.table("./data/features.txt")
 feature_selected_labels <- feature_labels[grep("-(std|mean)\\(", feature_labels$V2), ]
 
 # transform features to select values from feature_vals
-# ()
-feature_selected_labels$V1 <- paste("V", feature_selected$V1, sep = "")
+feature_selected_labels$V1 <- paste("V", feature_selected_labels$V1, sep = "")
 
+#form data set for selected features' values with proper labels
+feature_vals <- feature_vals[ ,feature_selected_labels$V1]
+names(feature_vals) <- feature_selected_labels$V2
+rm(feature_labels, feature_selected_labels)
 
-
-#merge
-
-#"select" features_to_show with features values (x_...)
-#feat_val[, needed$V1]
+#get full merged data set
+data_set <- cbind("Subject" = subjects$V1, "Activity" = activity_vals$V1, feature_vals)
+rm(subjects, activity_vals, feature_vals)
 
 #merge activity and features
 #read.table("./data/test/y_test.txt") -> test_act
