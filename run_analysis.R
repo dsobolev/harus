@@ -38,4 +38,10 @@ data_set <- data_set[order(data_set$Subject, data_set$Activity), ]
 activity_labels <- read.table("./data/activity_labels.txt")
 data_set$Activity <- sapply(data_set$Activity, function(x){ activity_labels[activity_labels$V1 == x, "V2"] })
 
+# create "mean" data set
+# exclude 1, 2 columns which are Subject and Activity from calculation
+mean_data_set <- aggregate(data_set[, -c(1, 2)], by=list(data_set$Subject, ds$Activity), FUN=mean)
+names(mean_data_set)[1:2] <- c("Subject", "Activity")
+write.table(mean_data_set, file = "./data/resultset.txt", row.names = F)
+
 
