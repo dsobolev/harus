@@ -32,6 +32,8 @@ rm(feature_labels, feature_selected_labels)
 data_set <- cbind("Subject" = subjects$V1, "Activity" = activity_vals$V1, feature_vals)
 rm(subjects, activity_vals, feature_vals)
 
+data_set <- data_set[order(data_set$Subject, data_set$Activity), ]
+
 #merge activity and features
 #read.table("./data/test/y_test.txt") -> test_act
 #merged_y_x <- cbind("Activity" = test_act[[1]], test_val)
