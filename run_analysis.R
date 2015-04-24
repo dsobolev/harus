@@ -1,6 +1,4 @@
-#names(feature_values) <- needed$V2 -> give names to features
-
-#used to get merged set of training and test data
+#function used to get merged set of training and test data
 #depends on file structure provided by Samsung
 merge_test_train <- function(value) {
   test_path <- paste("./data/test/", value, "_test.txt", sep = "")
