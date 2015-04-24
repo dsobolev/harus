@@ -34,11 +34,8 @@ rm(subjects, activity_vals, feature_vals)
 
 data_set <- data_set[order(data_set$Subject, data_set$Activity), ]
 
-#merge activity and features
-#read.table("./data/test/y_test.txt") -> test_act
-#merged_y_x <- cbind("Activity" = test_act[[1]], test_val)
+# Name Activities
+activity_labels <- read.table("./data/activity_labels.txt")
+data_set$Activity <- sapply(data_set$Activity, function(x){ activity_labels[activity_labels$V1 == x, "V2"] })
 
-#change activity names
-#act_labels <- read.table("./data/activity_labels.txt")
-#merged_y_x$Activity <- sapply(merged_y_x$Activity, function(x){ act_labels[act_labels$V1 == x, "V2"]})
 
